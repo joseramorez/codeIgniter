@@ -14,6 +14,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     {
       $this->load->view('login');
     }
+    public function check()
+    {
+      var_dump($_POST);
+      echo "validacion";
+    }
 
   }
 ?>
