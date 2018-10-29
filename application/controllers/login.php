@@ -33,7 +33,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $this->destroy_session();
       }
     }
-    public function start_session($r)
+
+    public function loguot()
+    {
+      $this->destroy_session();
+    }
+    
+    private function start_session($r)
     {
       $data = array('id'=> $r->id, 'nombre' => $r->nombre, 'username'=> $r->username, 'nivel'=> $r->nivel);
       $this->session->set_userdata($data);
@@ -45,10 +51,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       redirect('login');
     }
 
-    public function reset_session_vars() {
+    private function reset_session_vars() {
       $data = array('nombre' => null, 'username'=> null, 'nivel'=> null);
       $this->session->unset_userdata($data);
     }
+
+
 
   }
 ?>

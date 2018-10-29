@@ -19,6 +19,7 @@ if ( ! function_exists('check_state'))
     $user = ($_uid && $_level) ? check_userid($uid) : True;
     if($time && (!$level || !$user)) exit_by_forbiden();
     if(!$time || !$level || !$user) destroy_session();
+    var_dump($_SESSION);
   }
 }
 
