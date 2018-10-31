@@ -48,6 +48,8 @@ if ( ! function_exists('get_pwd'))
   function destroy_session()
   {
     reset_session_vars();
+    $ci =& get_instance();
+    $ci->session->sess_destroy();
     redirect('login');
   }
 
@@ -60,7 +62,7 @@ if ( ! function_exists('get_pwd'))
       if(empty($_SESSION['id'])) destroy_session();
       return ($_SESSION['id'] == $userid) ? True : False;
   }
-  
+
   function check_time()
   {
     if(!isset($_SESSION['__ci_last_regenerate'])) destroy_session();

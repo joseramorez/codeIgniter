@@ -42,4 +42,14 @@ class Welcome extends CI_Controller {
 		$this->load->view('Template/Template_F');
 	}
 
+	public function cargar_archivo()
+	{
+		$data['titulo'] = "CARGA DE ARCHIVOS";
+		$this->load->view('Template/Template_H',$data);
+		
+		$this->load->view('Template/Template_F');
+
+	}
+
+
 }

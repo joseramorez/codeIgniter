@@ -17,7 +17,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     public function index()
     {
       $data = array();
-      var_dump($_SESSION);
       $data['error'] = $this->session->flashdata('error');
       $this->load->view('login',$data);
     }
@@ -49,6 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     private function destroy_session()
     {
       $this->reset_session_vars();
+      $this->session->sess_destroy();
       redirect('login');
     }
 
