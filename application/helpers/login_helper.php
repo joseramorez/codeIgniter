@@ -19,7 +19,6 @@ if ( ! function_exists('check_state'))
     $user = ($_uid && $_level) ? check_userid($uid) : True;
     if($time && (!$level || !$user)) exit_by_forbiden();
     if(!$time || !$level || !$user) destroy_session();
-    var_dump($_SESSION);
   }
 }
 
@@ -61,8 +60,10 @@ if ( ! function_exists('get_pwd'))
       if(empty($_SESSION['id'])) destroy_session();
       return ($_SESSION['id'] == $userid) ? True : False;
   }
+  
   function check_time()
   {
+    if(!isset($_SESSION['__ci_last_regenerate'])) destroy_session();
     // if(!isset($_SESSION['login_date'])) $this->destroy_session();
     // $ultimo_acceso = $_SESSION['login_date'];
     // $limite_ultimo_acceso = $ultimo_acceso + SESSION_LIFE_TIME;
