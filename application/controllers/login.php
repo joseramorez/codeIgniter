@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    * CLASE PARA EL LOGEO DE SESSION
    */
 
-  class login extends CI_Controller
+  class Login extends CI_Controller
   {
     public function __construct()
     {
@@ -12,12 +12,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       $this->state = false;
       $this->load->model('login_m');
       $this->load->helper('login');
+      $this->session->keep_flashdata('error_login');
     }
 
     public function index()
     {
-      $data = array();
-      $data['error'] = $this->session->flashdata('error');
+      $data['error_login'] = $this->session->flashdata('error_login');
       $this->load->view('login',$data);
     }
 
@@ -29,14 +29,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       if (count($r)>0) {
         $this->start_session($r);
       }else {
-        $this->session->set_flashdata('error', 'El usuario o la contraseña son incorrectos.');
-        $this->destroy_session();
+        // $this->destroy_session();
+        $this->session->set_flashdata('error_login', 'El usuario o la contraseña son incorrectos.');
+        $this->reset_session_vars();
+        redirect('/login');
       }
     }
 
     public function loguot()
     {
       $this->destroy_session();
+      redirect('/login');
     }
 
     private function start_session($r)
@@ -49,15 +52,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     {
       $this->reset_session_vars();
       $this->session->sess_destroy();
-      redirect('login');
     }
 
     private function reset_session_vars() {
-      $data = array('nombre' => '', 'username'=> '', 'nivel'=> '');
-      $this->session->unset_userdata($data);
+      $this->session->unset_userdata('nombre');
+      $this->session->unset_userdata('username');
+      $this->session->unset_userdata('nivel');
+      $this->session->unset_userdata('id');
     }
-
-
 
   }
 ?>

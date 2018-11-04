@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -31,10 +30,10 @@
               <a class="nav-link text-dark" href="#">PRICIPAL <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-dark" href="#">BUSQUEDAS</a>
+              <a class="nav-link text-dark" href="/Welcome/segunda_pagina">segunda paguina</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-dark" href="#">NUEVO</a>
+              <a class="nav-link text-dark" href="/Welcome/subir_archivo">SUBIR ARCHIVO</a>
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
