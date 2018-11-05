@@ -55,7 +55,7 @@ class Welcome extends CI_Controller {
 
 	public function subir()
 	{
-		// var_dump($_FILES);
+		check_state(2);
 		$this->load->library('parser');
 		$config['upload_path'] = './static/uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
@@ -66,7 +66,6 @@ class Welcome extends CI_Controller {
 		$this->load->library('upload', $config);
 		if (!$this->upload->do_upload('archivo_subir')) {
 			$error  = $this->upload->display_errors();
-			// $this->load->view('welcome/subir_archivo',$error);
 			$this->session->set_flashdata('error_upload',$error);
 			redirect('/Welcome/subir_archivo');
 		}else {

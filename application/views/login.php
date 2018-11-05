@@ -33,7 +33,7 @@
   				</div>
 
   				<form class="login100-form validate-form"  method="POST" action="/login/check" id="login">
-            <?php if ($error_login): ?><div class="alert alert-danger"><?php echo $error_login ?></div><?php endif ?>
+            <?php if ($error_login): ?><div class="alert alert-danger" role="alert"><?php echo $error_login ?></div><?php endif ?>
   					<div class="wrap-input100 validate-input m-b-26" data-validate="Usuario requerido">
   						<span class="label-input100">Usuario</span>
   						<input class="input100" type="text" name="user" id="user" placeholder="DreamsBoys">

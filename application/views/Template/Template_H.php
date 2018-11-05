@@ -10,6 +10,7 @@
     <!--bootstrap-->
     <link rel="stylesheet" href="<?php echo base_url();?>static/biblioteca/bootstrap/css/bootstrap.css">
     <script src="<?php echo base_url();?>static/biblioteca/bootstrap/js/bootstrap.js"></script>
+    <script src="<?php echo base_url(); ?>static/js/popper.min.js"></script>
     <!--JQUERY-->
     <script src="<?php echo base_url(); ?>static/js/jquery-3.1.1.js"></script>
     <!--template-->

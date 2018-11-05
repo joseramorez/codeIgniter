@@ -3,8 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <!DOCTYPE html>
 <div class="row">
-  <div class="conteiner">
-    <div class="col-md-12">
+  <div class="container-fluid">
+    <div class="col-md-4 col-md-offset-4">
       <form class="" action="subir" method="post" enctype="multipart/form-data">
         <?php echo $error ?>
         <div class="custom-file mb-3">

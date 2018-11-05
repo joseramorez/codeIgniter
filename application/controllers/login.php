@@ -12,7 +12,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       $this->state = false;
       $this->load->model('login_m');
       $this->load->helper('login');
-      $this->session->keep_flashdata('error_login');
     }
 
     public function index()
