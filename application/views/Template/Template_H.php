@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Ing. Jose A. Ramirez Mendoza">
+    <!--JQUERY-->
+    <script src="<?php echo base_url(); ?>static/js/jquery-3.1.1.js"></script>
     <!--bootstrap-->
     <link rel="stylesheet" href="<?php echo base_url();?>static/biblioteca/bootstrap/css/bootstrap.css">
     <script src="<?php echo base_url();?>static/biblioteca/bootstrap/js/bootstrap.js"></script>
-    <script src="<?php echo base_url(); ?>static/js/popper.min.js"></script>
-    <!--JQUERY-->
-    <script src="<?php echo base_url(); ?>static/js/jquery-3.1.1.js"></script>
+    <script src="<?php echo base_url();?>static/js/popper.min.js"></script>
+    <!-- <script src="<?php echo base_url();?>static/biblioteca/bootstrap/src/util.js"></script> -->
     <!--template-->
     <link rel="stylesheet" href="<?php echo base_url();?>static/css/template.css">
 
@@ -31,7 +32,7 @@
               <a class="nav-link text-dark" href="#">PRICIPAL <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-dark" href="/Welcome/segunda_pagina">segunda paguina</a>
+              <a class="nav-link text-dark" href="/usuarios/listado">USUARIOS LISTA</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-dark" href="/Welcome/subir_archivo">SUBIR ARCHIVO</a>
