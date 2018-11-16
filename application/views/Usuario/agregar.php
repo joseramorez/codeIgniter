@@ -43,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <span class="error" id="errorpwd">{errorp}</span>
       </div>
 		</div>
-
+    
 
 		<div class="form-group row">
 			<label for="level" class="col-md-2 col-form-label">Nivel de Acceso:</label>

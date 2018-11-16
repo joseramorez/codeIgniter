@@ -11,6 +11,8 @@ class Usuarios extends CI_Controller
   {
     parent::__construct();
     $this->load->model('Usuario_m');
+    $this->load->helper('login');
+    $this->lang->load('db');
   }
 
   // LISTADO DE USUARIOS
@@ -41,14 +43,25 @@ class Usuarios extends CI_Controller
   }
   public function guardar()
   {
-    $this->load->helper('login');
+    check_state(1);
     $this->Usuario_m->nombre = $this->input->post('nombre');
     $this->Usuario_m->apellido_p = $this->input->post('apellido_p');
     $this->Usuario_m->apellido_m = $this->input->post('apellido_m');
     $this->Usuario_m->username = $this->input->post('username');
-    $this->Usuario_m->passwords = $this->input->post('passwords');
+    $this->Usuario_m->passwords = get_pwd($this->input->post('passwords'));
     $this->Usuario_m->nivel = $this->input->post('nivel');
-    var_dump($this->Usuario_m);
+    $r = $this->Usuario_m->guardar();
+    if (is_array($r)) {
+      echo "CODIGO DE ERRO DE LA BASE DE DATOS ".$r['code'];
+    }elseif ($r==TRUE) {
+      echo "insercion exitosa";
+      var_dump($r);
+    }
+  }
+
+  private function username_exist()
+  {
+
   }
 }
 

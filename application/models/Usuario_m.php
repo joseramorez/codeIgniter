@@ -25,7 +25,19 @@ class Usuario_m extends CI_model
 
   public function guardar()
   {
-    
+    $this->db->set('nombre',$this->nombre);
+    $this->db->set('apellido_p',$this->apellido_p);
+    $this->db->set('apellido_m',$this->apellido_m);
+    $this->db->set('username',$this->username);
+    $this->db->set('passwords',$this->passwords);
+    $this->db->set('nivel',$this->nivel);
+    $r = $this->db->insert('usuario');
+    if ($r) {
+      return $this->db->insert_id(); #El número de identificación de inserción al realizar inserciones de base de datos.
+    }
+    else {
+      return $this->db->error();
+    }
   }
 }
 

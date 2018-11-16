@@ -27,11 +27,11 @@ if ( ! function_exists('get_pwd'))
 {
   function get_pwd($p='')
   {
-      $p = "";
-      if(isset($_POST['pwd'])) {
-        $p = md5(htmlentities(strip_tags($_POST['pwd'])));
+      $_p = "";
+      if(isset($p)) {
+        $_p = md5(htmlentities(strip_tags($p)));
       }
-      return $p;
+      return $_p;
     }
   }
 
