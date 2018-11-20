@@ -8,7 +8,7 @@ class login_m extends CI_model
   function __construct()
   {
     parent::__construct();
-    $this->id=0;
+    $this->id_usuario=0;
     $this->nombre='';
     $this->username='';
     $this->passwords='';
@@ -17,7 +17,7 @@ class login_m extends CI_model
 
   public function check()
   {
-    $this->db->select('id, nombre, username, nivel');
+    $this->db->select('id_usuario, nombre, username, nivel');
     $this->db->from('usuario');
     $this->db->where('username',$this->username);
     $this->db->where('passwords',$this->passwords);
