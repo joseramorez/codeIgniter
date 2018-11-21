@@ -43,6 +43,7 @@ class Usuarios extends CI_Controller
     $data['passwords']='';
     $data['errorp']='';
     $data['titulo_btn']='Agregar';
+    $data['submit']='/usuarios/guardar';
     $this->load->view('Template/Template_H',$data);
     $this->parser->parse('Usuario/agregar',$data);
     $this->load->view('Template/Template_F');
@@ -51,6 +52,10 @@ class Usuarios extends CI_Controller
   public function guardar()
   {
     check_state(1);
+    if (empty($_POST['nombre']) || empty($_POST['username']) || empty($_POST['passwords']) || empty($_POST['nivel'])) {
+      $this->session->set_flashdata('error_usuario', 'COMPLETE LOS CAMPOS NECESARIOS');
+      redirect('/usuarios/agregar');
+    }
     $this->Usuario_m->nombre = $this->input->post('nombre');
     $this->Usuario_m->apellido_p = $this->input->post('apellido_p');
     $this->Usuario_m->apellido_m = $this->input->post('apellido_m');
@@ -66,7 +71,6 @@ class Usuarios extends CI_Controller
     }else {
       $this->session->set_flashdata('error_usuario', 'ALGO SALIO MAL, INTENTELO NUEVAMENTE');
       redirect('/usuarios/listado');
-
     }
   }
 //VALIDAR LOS CODE DE ERROR QUE RETORNA
@@ -120,9 +124,37 @@ class Usuarios extends CI_Controller
     $data['passwords']='';
     $data['errorp']='';
     $data['titulo_btn']='Editar';
+    $data['submit'] = '/';
     $this->load->view('Template/Template_H',$data);
     $this->parser->parse('Usuario/agregar',$data);
     $this->load->view('Template/Template_F');
+  }
+
+  // ACTUALIZAR DATOS DE USUARIO
+  public function actualizar()
+  {
+    check_state(1);
+    if (empty($_POST['nombre']) || empty($_POST['username']) || empty($_POST['passwords']) || empty($_POST['nivel'])) {
+      $this->session->set_flashdata('error_usuario', 'COMPLETE LOS CAMPOS NECESARIOS');
+      redirect('/usuarios/agregar');
+    }
+    $this->Usuario_m->usuario_id = $this->input->post();
+    $this->Usuario_m->nombre = $this->input->post('nombre');
+    $this->Usuario_m->apellido_p = $this->input->post('apellido_p');
+    $this->Usuario_m->apellido_m = $this->input->post('apellido_m');
+    $this->Usuario_m->username = $this->input->post('username');
+    $this->Usuario_m->passwords = get_pwd($this->input->post('passwords'));
+    $this->Usuario_m->nivel = $this->input->post('nivel');
+    $r = $this->Usuario_m->guardar();
+    if (is_array($r)) {
+        $this->error_usuario($r);
+    }elseif (is_numeric($r)) {
+        $this->session->set_flashdata('success_usuario','USUARIO <strong>'.$this->Usuario_m->username.' </strong> AGREGADO CON EXITO');
+        redirect('/usuarios/listado');
+    }else {
+      $this->session->set_flashdata('error_usuario', 'ALGO SALIO MAL, INTENTELO NUEVAMENTE');
+      redirect('/usuarios/listado');
+    }
   }
 }
 

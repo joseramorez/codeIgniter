@@ -22,8 +22,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        <tr>
          <th>ID</th>
          <th>NOMBRE</th>
+         <th>APELLIDOS</th>
          <th>USUARIO</th>
-         <th>CONTRASEÑA</th>
+         <!-- <th>CONTRASEÑA</th> -->
          <th>NIVEL</th>
          <th>OPCIONES</th>
        </tr>
@@ -32,9 +33,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        {LISTADO}
        <tr>
          <td>{id_usuario}</td>
-         <td>{nombre}</td>
+         <td>{nombre} </td>
+         <td>{apellido_p} {apellido_m}</td>
          <td>{username}</td>
-         <td>{passwords}</td>
+         <!-- <td>{passwords}</td> -->
          <td>{nivel}</td>
          <td>
            <a onclick="confirmar('/usuarios/eliminar/{id_usuario}','Desea eliminar al Usuario {username}')"><button type="button" class="btn btn-default"><span class="fas fa-trash-alt"></span></button></a>

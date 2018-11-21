@@ -9,6 +9,9 @@
     <meta name="author" content="Ing. Jose A. Ramirez Mendoza">
     <!--JQUERY-->
     <script src="<?php echo base_url(); ?>static/js/jquery-3.1.1.js"></script>
+    <!-- VALIDATE -->
+    <script src="<?php echo base_url(); ?>static/biblioteca/jquery-validation/dist/jquery.validate.js"></script>
+
     <!--bootstrap-->
     <link rel="stylesheet" href="<?php echo base_url();?>static/biblioteca/bootstrap/css/bootstrap.css">
     <script src="<?php echo base_url();?>static/biblioteca/bootstrap/js/bootstrap.js"></script>
@@ -56,7 +59,7 @@
           <form class="form-inline mt-2 mt-md-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Juan Sanchez" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">BUSCAR</button>
-            <a class="nav-link text-dark" href="/login/loguot">CERRAR</a>
+            <a class="nav-link text-dark" onclick="confirmar('/login/loguot','DESEA, CERRAR SESSION..?')">CERRAR</a>
           </form>
         </div>
       </nav>

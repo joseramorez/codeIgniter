@@ -1,5 +1,5 @@
 function habilitar(field) {
-    if(document.getElementById('level').selectedIndex == 5) {
+    if(document.getElementById('nivel').selectedIndex == 5) {
         document.getElementById(field).disabled = false;
         document.getElementById(field).focus();
     } else {
