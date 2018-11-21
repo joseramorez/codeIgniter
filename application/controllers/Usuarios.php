@@ -111,6 +111,7 @@ class Usuarios extends CI_Controller
     $data['error_usuario'] = $this->session->flashdata('error_usuario');
     $data['success_usuario'] = $this->session->flashdata('success_usuario');
     $data['titulo'] = 'EDITAR USUARIOS';
+    $data['usuario_id'] = $r->id_usuario;
     $data['nombre']=$r->nombre ;
     $data['apellido_p']=$r->apellido_p;
     $data['apellido_m']=$r->apellido_m;
