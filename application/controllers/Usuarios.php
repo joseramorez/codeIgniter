@@ -28,6 +28,7 @@ class Usuarios extends CI_Controller
     $this->parser->parse('Usuario/listado',$data);
     $this->load->view('Template/Template_F');
   }
+  // AGREGAR USUARIO
   public function agregar()
   {
     check_state(1);
@@ -46,6 +47,7 @@ class Usuarios extends CI_Controller
     $this->parser->parse('Usuario/agregar',$data);
     $this->load->view('Template/Template_F');
   }
+  // GUARDADO DEL USUARIO DESDE EL FORM
   public function guardar()
   {
     check_state(1);
@@ -67,7 +69,7 @@ class Usuarios extends CI_Controller
 
     }
   }
-
+//VALIDAR LOS CODE DE ERROR QUE RETORNA
   private function error_usuario($error = array())
   {
     switch ($error['code']) {
@@ -80,6 +82,46 @@ class Usuarios extends CI_Controller
         redirect('/usuarios/agregar');
         break;
     }
+  }
+  // ELIMINAR USUARIO DESDE LISTADO
+  public function eliminar($id=0)
+  {
+    check_state(1);
+    $this->Usuario_m->usuario_id=$id;
+    $datos = $this->Usuario_m->editar();
+    $r = $this->Usuario_m->eliminar();
+    if (!$r) {
+      $this->session->set_flashdata('error_usuario','ALGO SALIO MAL, AL EDITAR AL USUARIO');
+      redirect('/usuarios/listado');
+    }else {
+      $this->session->set_flashdata('success_usuario','EL USUARIO: <b>'. $datos->username.'</b> HA SIDO ELIMINADO CON EXITO');
+      redirect('/usuarios/listado');
+    }
+  }
+// OBTENER Y EDIAR USUARIO
+  public function editar($id=0)
+  {
+    check_state(1);
+    $this->Usuario_m->usuario_id = (int)$id;
+    $r = $this->Usuario_m->editar();
+    if (!$r) {
+      $this->session->set_flashdata('error_usuario','ALGO SALIO MAL, AL EDITAR AL USUARIO');
+      redirect('/usuarios/listado');
+    }
+    $data['error_usuario'] = $this->session->flashdata('error_usuario');
+    $data['success_usuario'] = $this->session->flashdata('success_usuario');
+    $data['titulo'] = 'EDITAR USUARIOS';
+    $data['nombre']=$r->nombre ;
+    $data['apellido_p']=$r->apellido_p;
+    $data['apellido_m']=$r->apellido_m;
+    $data['username']=$r->username;
+    $data['error']='';
+    $data['passwords']='';
+    $data['errorp']='';
+    $data['titulo_btn']='Editar';
+    $this->load->view('Template/Template_H',$data);
+    $this->parser->parse('Usuario/agregar',$data);
+    $this->load->view('Template/Template_F');
   }
 }
 

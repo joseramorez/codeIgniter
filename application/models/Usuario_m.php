@@ -8,7 +8,7 @@ class Usuario_m extends CI_model
   function __construct()
   {
     parent::__construct();
-    $this->id=0;
+    $this->usuario_id=0;
     $this->nombre='';
     $this->apellido_p='';
     $this->apellido_m='';
@@ -37,6 +37,25 @@ class Usuario_m extends CI_model
     }
     else {
       return $this->db->error();
+    }
+  }
+
+  public function eliminar()
+  {
+    $this->db->where('id_usuario', $this->usuario_id);
+    return $this->db->delete('usuario');
+  }
+
+  public function editar()
+  {
+    $this->db->select('*');
+    $this->db->from('usuario');
+    $this->db->where('id_usuario',$this->usuario_id);
+    $result = $this->db->get();
+    if ($result) {
+      return $result->row();
+    }else {
+      return FALSE;
     }
   }
 }

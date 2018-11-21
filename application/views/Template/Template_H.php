@@ -13,9 +13,24 @@
     <link rel="stylesheet" href="<?php echo base_url();?>static/biblioteca/bootstrap/css/bootstrap.css">
     <script src="<?php echo base_url();?>static/biblioteca/bootstrap/js/bootstrap.js"></script>
     <script src="<?php echo base_url();?>static/js/popper.min.js"></script>
-    <!-- <script src="<?php echo base_url();?>static/biblioteca/bootstrap/src/util.js"></script> -->
+    <!-- icons -->
+    <link rel="stylesheet" href="<?php echo base_url();?>static/biblioteca/fontawesome/css/all.css">
+
     <!--template-->
     <link rel="stylesheet" href="<?php echo base_url();?>static/css/template.css">
+
+    <!--alertify  -->
+    <link rel="stylesheet" href="<?php echo base_url();?>static/biblioteca/alertifyjs/css/alertify.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>static/biblioteca/alertifyjs/css/themes/bootstrap.css">
+    <script src="<?php echo base_url();?>static/biblioteca/alertifyjs/alertify.js"></script>
+    <script type="text/javascript">
+      alertify.defaults.transition = "slide";
+      alertify.defaults.theme.ok = "btn btn-primary";
+      alertify.defaults.theme.cancel = "btn btn-danger";
+      alertify.defaults.theme.input = "form-control";
+    </script>
+    <!-- generales-->
+    <script src="<?php echo base_url(); ?>static/js/generales.js"></script>
 
     <title><?php echo $titulo; ?></title>
   </head>
