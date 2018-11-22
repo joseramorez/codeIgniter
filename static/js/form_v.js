@@ -5,6 +5,10 @@ $(document).ready(function() {
 	// 		$("form").submit();
 	// 	}
 	// });
+	jQuery.validator.addMethod("noSpace", function(value, element) {
+		return value.indexOf(" ") < 0 && value != "";
+		// return value == '' || value.trim().length != 0;
+	}, "NO AGREGAR ESPCION EN BLANCO");
 
 	$("#forms_usuario_agregar").validate({
 		rules: {
@@ -13,7 +17,8 @@ $(document).ready(function() {
 			apellido_m: "required",
 			username: {
 				required: true,
-				minlength: 6
+				minlength: 6,
+				noSpace: true
 			},
 			passwords: {
 				required: true,
