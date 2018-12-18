@@ -9,7 +9,6 @@ class Configuracion extends CI_Controller
   function __construct()
   {
     parent::__construct();
-    $this->load->helper('login');
   }
   public function index()
   {
@@ -17,12 +16,14 @@ class Configuracion extends CI_Controller
   }
   public function alta_doc()
   {
+    check_state(1);
     $data['titulo'] = 'ALTA DOC';
-    $data['titulo_btn'] = 'AGREGAR';
+    $alta_doc['titulo_btn'] = 'AGREGAR';
+    $alta_doc['nombre'] = '';
+    $alta_doc['descripcion'] = '';
     $this->load->view('Template/Template_H',$data);
-    $this->parser->parse('Configuracion/alta_doc',$data);
+    $this->parser->parse('Configuracion/alta_doc',$alta_doc);
     $this->load->view('Template/Template_F');
-
   }
 }
 
