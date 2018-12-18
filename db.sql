@@ -71,13 +71,56 @@ create table ruta_doc(
   ,CONSTRAINT ruta_doc_pk primary key (id_ruta_doc)
 );
 
+create table tipo_documento(
+   id_tipo_documento int not null auto_increment
+   ,tipo char
+   ,descripcion char
+   ,CONSTRAINT tipo_documento_pk primary key (id_tipo_documento)
+);
+
 create table biotacora_doc(
   id_bitacora_doc int not null auto_increment
-  ,id_folio
-  ,id_documento
-  .id_tipo_documento
-  ,id_ruta_doc
-  ,fecha_recepcion
-  ,nota
+  ,id_folio int
+  ,id_documento int
+  .id_tipo_documento int
+  ,id_ruta_doc int
+  ,fecha_recepcion date
+  ,nota char
+  ,CONSTRAINT biotacora_doc_pk (id_bitacora_doc)
+  ,CONSTRAINT biotacora_doc_folio_fk foreign key (id_folio) references folio (id_folio)
+  ,CONSTRAINT biotacora_doc_documento_fk foreign key (id_documento) references documento (id_documento)
+  ,CONSTRAINT biotacora_doc_tipo_docuemto_fk foreign key (id_tipo_documento) references tipo_documento (id_tipo_documento)
+  ,CONSTRAINT biotacora_doc_ruta_doc_fk foreign key (id_ruta_doc) references ruta_doc (id_ruta_doc)
+  );
 
+create table categoria_gasto(
+  id_categoria_gasto int not null auto_increment
+  ,nombre char
+  ,descripcion char
+  ,CONSTRAINT categoria_gasto_pk primary key (id_categoria_gasto)
+);
+
+create table gasto(
+  id_gasto int not null auto_increment
+  ,id_categoria_gasto int
+  ,nombre char
+  ,costo float
+  ,descripcion char
+  ,CONSTRAINT gasto_pk primary key (id_gasto)
+  ,CONSTRAINT gasto_categoria_gasto_fk foreign key (id_categoria_gasto) references categoria_gasto (id_categoria_gasto)
+);
+
+create table gasto_folio(
+  id_gasto int
+  ,id_folio int
+  ,CONSTRAINT gasto_folio_gasto_fk foreign key (id_gasto) references gasto (id_gasto)
+  ,CONSTRAINT gasto_folio_folio_fk foreign key (id_folio) references folio (id_folio)
+);
+
+create table folio_persona(
+  id_folio_persona int not null auto_increment
+  ,id_persona int
+  ,tipo_persona char
+  ,CONSTRAINT folio_persona_pk primary key (id_folio_persona)
+  
 );
