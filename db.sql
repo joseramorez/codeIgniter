@@ -82,11 +82,11 @@ create table biotacora_doc(
   id_bitacora_doc int not null auto_increment
   ,id_folio int
   ,id_documento int
-  .id_tipo_documento int
+  ,id_tipo_documento int
   ,id_ruta_doc int
   ,fecha_recepcion date
   ,nota char
-  ,CONSTRAINT biotacora_doc_pk (id_bitacora_doc)
+  ,CONSTRAINT biotacora_doc_pk primary key (id_bitacora_doc)
   ,CONSTRAINT biotacora_doc_folio_fk foreign key (id_folio) references folio (id_folio)
   ,CONSTRAINT biotacora_doc_documento_fk foreign key (id_documento) references documento (id_documento)
   ,CONSTRAINT biotacora_doc_tipo_docuemto_fk foreign key (id_tipo_documento) references tipo_documento (id_tipo_documento)
@@ -122,5 +122,5 @@ create table folio_persona(
   ,id_persona int
   ,tipo_persona char
   ,CONSTRAINT folio_persona_pk primary key (id_folio_persona)
-  
+
 );
