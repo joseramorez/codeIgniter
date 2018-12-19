@@ -12,6 +12,7 @@ class Usuarios extends CI_Controller
     parent::__construct();
     $this->load->model('Usuario_m');
     $this->load->helper('login');
+    $this->load->helper('CodeErrorDB');
     // $this->lang->load('db');
   }
 

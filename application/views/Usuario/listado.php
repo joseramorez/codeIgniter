@@ -15,7 +15,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
-  </div><?php endif; ?>
+  </div>
+<?php endif; ?>
  <div class="col col-md-8 offset-md-2">
    <table class="table">
      <thead>
