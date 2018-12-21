@@ -92,7 +92,7 @@ class Usuarios extends CI_Controller
   public function eliminar($id=0)
   {
     check_state(1);
-    $this->Usuario_m->usuario_id=$id;
+    $this->Usuario_m->id_usuario=$id;
     $datos = $this->Usuario_m->editar();
     $r = $this->Usuario_m->eliminar();
     if (!$r) {
@@ -107,7 +107,7 @@ class Usuarios extends CI_Controller
   public function editar($id=0)
   {
     check_state(1);
-    $this->Usuario_m->usuario_id = (int)$id;
+    $this->Usuario_m->id_usuario = (int)$id;
     $r = $this->Usuario_m->editar();
     if (!$r) {
       $this->session->set_flashdata('error_usuario','ALGO SALIO MAL, AL EDITAR AL USUARIO');
@@ -116,7 +116,7 @@ class Usuarios extends CI_Controller
     $data['error_usuario'] = $this->session->flashdata('error_usuario');
     $data['success_usuario'] = $this->session->flashdata('success_usuario');
     $data['titulo'] = 'EDITAR USUARIOS';
-    $data['usuario_id'] = $r->id_usuario;
+    $data['id_usuario'] = $r->id_usuario;
     $data['nombre']=$r->nombre ;
     $data['apellido_p']=$r->apellido_p;
     $data['apellido_m']=$r->apellido_m;
@@ -126,6 +126,7 @@ class Usuarios extends CI_Controller
     $data['errorp']='';
     $data['titulo_btn']='Editar';
     $data['submit'] = '/';
+    $data['script'] = ;
     $this->load->view('Template/Template_H',$data);
     $this->parser->parse('Usuario/agregar',$data);
     $this->load->view('Template/Template_F');
@@ -139,7 +140,7 @@ class Usuarios extends CI_Controller
       $this->session->set_flashdata('error_usuario', 'COMPLETE LOS CAMPOS NECESARIOS');
       redirect('/usuarios/agregar');
     }
-    $this->Usuario_m->usuario_id = $this->input->post();
+    $this->Usuario_m->id_usuario = $this->input->post('');
     $this->Usuario_m->nombre = $this->input->post('nombre');
     $this->Usuario_m->apellido_p = $this->input->post('apellido_p');
     $this->Usuario_m->apellido_m = $this->input->post('apellido_m');

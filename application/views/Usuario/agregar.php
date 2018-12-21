@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script language="javascript" type="text/javascript" src="/static/js/forms_usuarios.js"></script>
 <div class="container">
 	<form method="POST" action="{submit}" id="forms_usuario_agregar">
-    <input type="hidden" name="usuario_id" id="usuario_id" value="{usuario_id}">
+    <input type="hidden" name="id_usuario" id="id_usuario" value="{id_usuario}">
 		<h3>{titulo_btn} Usuario</h3>
       <div class="form-row">
         <div class="form-group col col-md-4 validate">
@@ -75,3 +75,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 	</form>
 </div>
+<?php if ($script): ?>
+  <script type="text/javascript">
+    $('.selDiv option:eq(1)').prop('selected', true)
+  </script>
+<?php endif; ?>

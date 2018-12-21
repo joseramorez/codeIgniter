@@ -3,18 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  ?>
 
 <!DOCTYPE html>
-<?php if ($success_documento): ?>
+<?php if ($error_documento): ?>
   <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>ALERTA!</strong> <?php echo $error_listado_h ?>.
+    <strong>ALERTA!</strong> <?php echo $error_documento ?>.
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
 <?php endif; ?>
 
-<?php if ($error_documento): ?>
+<?php if ($success_documento): ?>
   <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>EXITO!</strong> <?php echo $error_listado_h ?>.
+    <strong>EXITO!</strong> <?php echo $success_documento ?>.
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 <div class="container">
-	<form method="POST" action="{submit}" id="forms_usuario_agregar">
-		<input type="hidden" name="usuario_id" id="id_documento" value="{usuario_id}">
+	<form method="POST" action="{submit}" id="forms_documento">
+		<input type="hidden" name="id_documento" id="id_documento" value="{id_documento}">
 		<h3>{titulo_btn} DOCUMENTOS</h3>
 		<div class="form-row">
 			<div class="form-group col col-md-5 validate">
@@ -43,6 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 	</form>
 </div>
+
 <?php if ($error_listado): ?>
   <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <strong>ALERTA!</strong> <?php echo $error_listado ?>.
@@ -51,12 +52,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </button>
   </div>
 <?php endif; ?>
+
+<?php if ($success_listado): ?>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>EXITO!</strong> <?php echo $success_listado ?>.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<?php endif; ?>
+
 <div class="col-md-8 offset-md-2">
   <table class="table">
     <thead class="thead-dark">
       <th>ID</th>
       <th>NOMBRE DOCUMENTO</th>
       <th>DESCRIPCION</th>
+      <th>ELIMINAR</th>
     </thead>
     <tbody>
       {LISTADO}
@@ -64,6 +76,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <td>{id_documento}</td>
         <td>{nombre}</td>
         <td>{descripcion}</td>
+        <td>
+          <a onclick="confirmar('/configuracion/editar_doc/{id_documento}','Desea editar al Usuario {nombre}')"><button type="button" class="btn btn-default"><span class="fas fa-edit"></span></button></a>
+          <a onclick="confirmar('/configuracion/eliminar_doc/{id_documento}','Desea eliminar al Usuario {nombre}')"><button type="button" class="btn btn-default"><span class="fas fa-trash-alt"></span></button></a>
+        </td>
       </tr>
       {/LISTADO}
     </tbody>

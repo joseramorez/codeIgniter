@@ -7,6 +7,7 @@ class Documento_m extends CI_model
 
   function __construct()
   {
+    parent::__construct();
     $this->id_documento = 0;
     $this->nombre = '';
     $this->descripcion = '';
@@ -21,8 +22,8 @@ class Documento_m extends CI_model
 
   public function guardar()
   {
-    $this->db->set('nombre',$this->nombre);
-    $this->db->set('descripcion',$this->descripcion);
+    $this->db->set('nombre', $this->nombre);
+    $this->db->set('descripcion', $this->descripcion);
     $r = $this->db->insert('documento');
     if ($r) {
       return $this->db->insert_id(); #El número de identificación de inserción al realizar inserciones de base de datos.
@@ -50,6 +51,15 @@ class Documento_m extends CI_model
       return FALSE;
     }
   }
+  public function actualizar()
+  {
+    $this->db->set('nombre', $this->nombre);
+    $this->db->set('descripcion', $this->descripcion);
+    $this->db->where('id_documento', $this->id_documento);
+    $r = $this->db->update('documento');
+    return $r;
+  }
+
 }
 
  ?>

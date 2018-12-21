@@ -40,8 +40,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          <!-- <td>{passwords}</td> -->
          <td>{nivel}</td>
          <td>
-           <a onclick="confirmar('/usuarios/eliminar/{id_usuario}','Desea eliminar al Usuario {username}')"><button type="button" class="btn btn-default"><span class="fas fa-trash-alt"></span></button></a>
            <a onclick="confirmar('/usuarios/editar/{id_usuario}','Desea editar al Usuario {username}')"><button type="button" class="btn btn-default"><span class="fas fa-edit"></span></button></a>
+           <a onclick="confirmar('/usuarios/eliminar/{id_usuario}','Desea eliminar al Usuario {username}')"><button type="button" class="btn btn-default"><span class="fas fa-trash-alt"></span></button></a>
          </td>
        </tr>
        {/LISTADO}

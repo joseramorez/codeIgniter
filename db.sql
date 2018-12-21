@@ -22,15 +22,15 @@ create table folio(
 
 create table tramite(
   id_tramite int not null auto_increment
-  ,nombre char
-  ,descripcion char
+  ,nombre varchar(255)
+  ,descripcion varchar(255)
   ,CONSTRAINT tramite_pk primary key (id_tramite)
 );
 
 create table documento(
   id_documento int not null auto_increment
-  ,nombre char
-  ,descripcion char
+  ,nombre varchar(255) not null
+  ,descripcion varchar(255)
   ,CONSTRAINT documento_pk primary key (id_documento)
 );
 
@@ -55,26 +55,26 @@ create table caso(
   ,id_folio_tramite int not null
   ,tomo int
   ,registro int
-  ,observaciones char
+  ,observaciones varchar(255)
   ,CONSTRAINT caso_pk primary key (id_caso)
   ,CONSTRAINT caso_folio_tramite_fk foreign key (id_folio_tramite) references folio_tramite (id_folio_tramite)
 );
 create table ruta_doc(
   id_ruta_doc int not null auto_increment
-  ,nombre_original char
-  ,nombre_guardado char
+  ,nombre_original varchar(255)
+  ,nombre_guardado varchar(255)
   ,fecha_creacion date
   ,ultima_modificacion date
-  ,tamaño  char
-  ,extencion char
-  ,ruta_completa char
+  ,tamaño  varchar(255)
+  ,extencion varchar(255)
+  ,ruta_completa varchar(255)
   ,CONSTRAINT ruta_doc_pk primary key (id_ruta_doc)
 );
 
 create table tipo_documento(
    id_tipo_documento int not null auto_increment
-   ,tipo char
-   ,descripcion char
+   ,tipo varchar(255)
+   ,descripcion varchar(255)
    ,CONSTRAINT tipo_documento_pk primary key (id_tipo_documento)
 );
 
@@ -85,7 +85,7 @@ create table biotacora_doc(
   ,id_tipo_documento int
   ,id_ruta_doc int
   ,fecha_recepcion date
-  ,nota char
+  ,nota varchar(255)
   ,CONSTRAINT biotacora_doc_pk primary key (id_bitacora_doc)
   ,CONSTRAINT biotacora_doc_folio_fk foreign key (id_folio) references folio (id_folio)
   ,CONSTRAINT biotacora_doc_documento_fk foreign key (id_documento) references documento (id_documento)
@@ -95,17 +95,17 @@ create table biotacora_doc(
 
 create table categoria_gasto(
   id_categoria_gasto int not null auto_increment
-  ,nombre char
-  ,descripcion char
+  ,nombre varchar(255)
+  ,descripcion varchar(255)
   ,CONSTRAINT categoria_gasto_pk primary key (id_categoria_gasto)
 );
 
 create table gasto(
   id_gasto int not null auto_increment
   ,id_categoria_gasto int
-  ,nombre char
+  ,nombre varchar(255)
   ,costo float
-  ,descripcion char
+  ,descripcion varchar(255)
   ,CONSTRAINT gasto_pk primary key (id_gasto)
   ,CONSTRAINT gasto_categoria_gasto_fk foreign key (id_categoria_gasto) references categoria_gasto (id_categoria_gasto)
 );
@@ -120,7 +120,7 @@ create table gasto_folio(
 create table folio_persona(
   id_folio_persona int not null auto_increment
   ,id_persona int
-  ,tipo_persona char
+  ,tipo_persona varchar(255)
   ,CONSTRAINT folio_persona_pk primary key (id_folio_persona)
 
 );
