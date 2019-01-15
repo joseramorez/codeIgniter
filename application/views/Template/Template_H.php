@@ -62,6 +62,7 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="/configuracion/alta_doc">DOCUMENTOS</a>
+                <a class="dropdown-item" href="/configuracion/gasto_lista">GASTOS LISTA</a>
               </div>
             </li>
 

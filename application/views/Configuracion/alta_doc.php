@@ -72,13 +72,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </thead>
     <tbody>
       {LISTADO}
-      <tr>
+      <tr class="{contextual}">
         <td>{id_documento}</td>
         <td>{nombre}</td>
         <td>{descripcion}</td>
         <td>
-          <a onclick="confirmar('/configuracion/editar_doc/{id_documento}','Desea editar al Usuario {nombre}')"><button type="button" class="btn btn-default"><span class="fas fa-edit"></span></button></a>
-          <a onclick="confirmar('/configuracion/eliminar_doc/{id_documento}','Desea eliminar al Usuario {nombre}')"><button type="button" class="btn btn-default"><span class="fas fa-trash-alt"></span></button></a>
+          <a class="btn btn-default {editar_class}"  role="button" aria-disabled="true" onclick="confirmar('/configuracion/editar_doc/{id_documento}','Desea editar al Usuario {nombre}')" ><span class="fas fa-edit"></button></a>
+          <a class="btn btn-default {eliminar_class}"  role="button" aria-disabled="true" onclick="confirmar('/configuracion/eliminar_doc/{id_documento}','Desea eliminar al Usuario {nombre}')" ><span class="fas fa-trash-alt"></span></a>
         </td>
       </tr>
       {/LISTADO}

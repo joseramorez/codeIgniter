@@ -14,8 +14,17 @@ class Configuracion extends CI_Controller
   }
   public function index()
   {
+    $data['titulo'] = 'CONFIGURACION';
+    $index['TITULO'] = 'CONFIGURACION';
 
+    $this->load->view('Template/Template_H',$data);
+    $this->parser->parse('Configuracion/index',$index);
+    $this->load->view('Template/Template_F');
   }
+  // ===========================================================================
+  // ========================== DOCUMENTOS =====================================
+  // ===========================================================================
+
   public function alta_doc()
   {
     check_state(1);
@@ -119,7 +128,9 @@ class Configuracion extends CI_Controller
       $alta_doc['error_documento'] = $this->session->flashdata('error_documento');
       $alta_doc['error_listado'] = $this->session->flashdata('error_listado');
       $alta_doc['success_listado'] = $this->session->flashdata('success_listado');
-      $alta_doc['LISTADO'] = $this->__lista_docuemntos();
+      // $alta_doc['LISTADO'] = $this->__lista_docuemntos();
+      $alta_doc['LISTADO'] = array(array('id_documento' => $r->id_documento, 'nombre' => $r->nombre,'descripcion'=>$r->descripcion,
+                                          'contextual'=>'bg-warning',"editar_class"=>'disabled',"eliminar_class"=>'disabled' ));
 
       $this->load->view('Template/Template_H',$data);
       $this->parser->parse('Configuracion/alta_doc',$alta_doc);
@@ -149,6 +160,32 @@ class Configuracion extends CI_Controller
         redirect('/configuracion/alta_doc');
       }
     }
+
+    // ===========================================================================
+    // ========================== GASTOS =========================================
+    // ===========================================================================
+    public function gasto_lista()
+    {
+      check_state(1);
+      // TEMPLATE DATA
+      $data['titulo'] = 'ALTA DOC';
+      // VIEW DATA
+      $alta_doc['titulo_btn'] = 'AGREGAR';
+      $alta_doc['usuario_id'] = 0;
+      $alta_doc['nombre'] = '';
+      $alta_doc['descripcion'] = '';
+      $alta_doc['submit'] = '/configuracion/guardar';
+      $alta_doc['success_documento'] = $this->session->flashdata('success_documento');
+      $alta_doc['error_documento'] = $this->session->flashdata('error_documento');
+      $alta_doc['error_listado'] = $this->session->flashdata('error_listado');
+      $alta_doc['success_listado'] = $this->session->flashdata('success_listado');
+      $alta_doc['LISTADO'] = $this->__lista_docuemntos();
+
+      $this->load->view('Template/Template_H',$data);
+      $this->parser->parse('Configuracion/gastos',$alta_doc);
+      $this->load->view('Template/Template_F');
+    }
+
 }
 
  ?>

@@ -126,7 +126,7 @@ class Usuarios extends CI_Controller
     $data['errorp']='';
     $data['titulo_btn']='Editar';
     $data['submit'] = '/';
-    $data['script'] = ;
+    $data['script'] = "";
     $this->load->view('Template/Template_H',$data);
     $this->parser->parse('Usuario/agregar',$data);
     $this->load->view('Template/Template_F');
