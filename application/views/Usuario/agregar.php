@@ -8,14 +8,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
-  </div><?php endif; ?>
+  </div>
+<?php endif; ?>
 <?php if ($error_usuario): ?>
   <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <strong>ALERTA!</strong> <?php echo $error_usuario ?>.
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
-  </div><?php endif; ?>
+  </div>
+<?php endif; ?>
   <script language="javascript" type="text/javascript" src="/static/js/forms_usuarios.js"></script>
 <div class="container">
 	<form method="POST" action="{submit}" id="forms_usuario_agregar">
